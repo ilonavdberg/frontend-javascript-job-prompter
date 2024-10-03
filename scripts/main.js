@@ -71,4 +71,53 @@ const departments = {
     }
 }
 
+// Opdracht 1
 console.log(departments);
+console.log(`De afdeling Sales heeft ${departments.sales.numberOfEmployees} medewerkers.`);
+console.log(`Marketing is een leuke afdeling om te werken. ${departments.marketing.description}`);
+console.log(`De afdeling Customer Service heeft ${departments["customer-service"].numberOfEmployees} medewerkers.`);
+console.log(`Sales is een uitdagende afdeling om te werken als Verkoopmanager. ${departments.sales.description}`);
+
+// Opdracht 2
+const userInputDepartment = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]').toLowerCase();
+switch (userInputDepartment) {
+    case "marketing":
+    case "sales":
+    case "customer-service":
+        console.log(`${userInputDepartment} is een leuke afdeling om te werken. Er werken op dit moment ${departments[userInputDepartment].numberOfEmployees} medewerkers.`);
+        break;
+    default:
+        const errorMessage = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen";
+        console.error(errorMessage);
+        //Opdracht 5
+        document.getElementById('error-message').textContent = errorMessage;
+        break;
+}
+
+//Opdracht 3+4
+userInputJob = parseInt(prompt(
+    `Je koos ${userInputDepartment} Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.
+    0: ${departments[userInputDepartment].jobs[0].title}
+    1: ${departments[userInputDepartment].jobs[1].title}
+    2: ${departments[userInputDepartment].jobs[2].title}
+    3: ${departments[userInputDepartment].jobs[3].title}`));
+
+switch (userInputJob) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+        console.log(`Je koos ${departments[userInputDepartment].jobs[userInputJob].title}. Een uitdagende rol! ${departments[userInputDepartment].jobs[userInputJob].description}`);
+        //Opdracht 5
+        document.getElementById('role-title').textContent = departments[userInputDepartment].jobs[userInputJob].title;
+        document.getElementById('department-description').textContent = departments[userInputDepartment].description;
+        document.getElementById('role-description').textContent = departments[userInputDepartment].jobs[userInputJob].description;
+        break;
+    default:
+        const errorMessage = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen";
+        console.error(errorMessage);
+        //Opdracht 5
+        document.getElementById('error-message').textContent = errorMessage;
+        break;
+}
+
